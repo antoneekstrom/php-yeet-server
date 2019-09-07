@@ -8,18 +8,17 @@
     $password;
 
     $user_data;
-
     $db;
 
     $fetch_user_file = "fetch_user.sql";
 
     function login($_username, $_password) {
         global $username, $password;
+
         $username = $_username;
         $password = $_password;
 
-        $valid = validate_credentials();
-        if ($valid) {
+        if (validate_credentials()) {
             credentials_valid();
         }
         else {
@@ -27,40 +26,30 @@
         }
     }
 
+    function validate_content($username, $password)
+    {
+        return (isset($username) && strlen($username) > 0 && isset($password) && strlen($password) > 0);
+    }
+
     function validate_credentials() {
-        global $username, $password;
+        global $username, $password, $user_data, $db;
 
-        $valid_content = (isset($username) && strlen($username) > 0 && isset($password) && strlen($password) > 0);
+        if (validate_content($username, $password)) {
 
-        if ($valid_content) {
-            return verify_password($username, $password);
+            $db = connect_db();
+            $user_data = query_user_data($username);
+
+            return verify_password($password, $user_data);
         }
         else return false;
     }
 
-    function verify_password($username, $password) {
-        global $user_data;
-
-        $user_data = query_user_data($username);
-        if (!isset($user_data) || count($user_data) == 0) return false;
-        $user_data = $user_data[0];
-
-        $pass_hash = $user_data['password_hash'];
-        $salt = $user_data['salt'];
-
-        return compare_hash($pass_hash, $salt, acquire_seasoning(), $password);
-    }
-
     function query_user_data($username) {
         global $db, $fetch_user_file;
-        $db = connect_db();
 
-        $q = file_get_contents($fetch_user_file);
-        $q = str_replace('$username', $username, $q);
+        $q = replace_query_vars(file_get_contents($fetch_user_file), array('$username' => $username));
 
-        $stmt = $db->prepare($q);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        return db_query($db, $q)[0];
     }
 
     function credentials_invalid() {
@@ -71,15 +60,19 @@
     }
 
     function credentials_valid() {
-        session_start();
+        global $user_data;
+        
         $user_data['password_hash'] = '';
         $user_data['salt'] = '';
+        
+        session_start();
         $_SESSION['user'] = $user_data;
+
         redirect("home_page.php", null);
     }
 
     // attempt to login with credentials
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    if (isset_array($_POST, array('username', 'password'))) {
         login($_POST['username'], $_POST['password']);
     }
     else {

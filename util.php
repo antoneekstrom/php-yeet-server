@@ -3,12 +3,18 @@
     $GLOBALS['url'] = $_URL;
 
     function redirect($path, $params) {
-        global $_URL;
-
         $url = $path . '?' . http_build_query($params);
         echo "<script type=\"text/javascript\">window.location.href = '$url'</script>";
     }
 
+    function isset_array($array, $keys) {
+        foreach ($keys as $key) {
+            if (!isset($array[$key])) return false;
+        }
+        return true;
+    }
+
+    // Didn't write this I'm afraid. frick regex, man
     function join_paths() {
         $paths = array();
     

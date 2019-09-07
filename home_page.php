@@ -13,7 +13,8 @@
     <body>
 
         <header>
-            <h1>HEJ PÅ DEJ, <?= print_r($_SESSION['user']) ?></h1>
+            <?php
+            ?>
         </header>
 
         <main>

@@ -23,6 +23,7 @@
 
         <main>
             <?php include("login_form.php") ?>
+            <button onClick="window.location.href='create_user_page.php'">Create Account</button>
         </main>
 
     </body>
