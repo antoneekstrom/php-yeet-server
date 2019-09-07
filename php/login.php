@@ -10,7 +10,7 @@
     $user_data;
     $db;
 
-    $fetch_user_file = "fetch_user.sql";
+    $fetch_user_file = "../sql/fetch_user.sql";
 
     function login($_username, $_password) {
         global $username, $password;

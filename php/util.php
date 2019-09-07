@@ -2,7 +2,7 @@
     $_URL = dirname(__FILE__);
     $GLOBALS['url'] = $_URL;
 
-    function redirect($path, $params) {
+    function redirect($path, $params = array()) {
         $url = $path . '?' . http_build_query($params);
         echo "<script type=\"text/javascript\">window.location.href = '$url'</script>";
     }

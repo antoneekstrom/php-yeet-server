@@ -3,6 +3,7 @@ USE yeet;
 INSERT INTO users (
     username,
     username_lowercase,
+    email,
     firstname,
     lastname,
     password_hash,
@@ -13,6 +14,7 @@ INSERT INTO users (
 VALUES (
     '$username',
     '$lowercase_username',
+    '$email',
     '$firstname',
     '$lastname',
     '$password_hash',

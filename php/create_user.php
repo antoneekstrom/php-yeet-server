@@ -3,9 +3,10 @@
     include("database.php");
     include("password.php");
     include("util.php");
-    
+
     function create_user(
         $username,
+        $email,
         $firstname,
         $lastname,
         $password_hash,
@@ -17,6 +18,7 @@
         $vars = array(
             '$username' => $username,
             '$lowercase_username' => strtolower($username),
+            '$email' => $email,
             '$firstname' => ucfirst(strtolower($firstname)),
             '$lastname' => ucfirst(strtolower($lastname)),
             '$password_hash' => $password_hash,
@@ -25,8 +27,8 @@
             '$profile_image' => $profile_image
         );
 
-        $q = replace_query_vars(file_get_contents("create_user.sql"), $vars);
-        db_query(connect_db(), $q);
+        $q = replace_query_vars(file_get_contents("../sql/create_user.sql"), $vars);
+        $r = db_query(connect_db(), $q);
     }
 
     if (isset($_POST['create_user']) || isset($_GET['create_user'])) {
@@ -40,6 +42,7 @@
 
         create_user(
             $_POST['username'],
+            (isset($_POST['email']) ? $_POST['email'] : null),
             $_POST['firstname'],
             $_POST['lastname'],
             $password_hash,

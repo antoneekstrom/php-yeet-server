@@ -1,6 +1,6 @@
 <?php
 
-    $db_config_file = "dbconfig.json";
+    $db_config_file = "../dbconfig.json";
 
     function connect_db() {
         global $db_config_file;
