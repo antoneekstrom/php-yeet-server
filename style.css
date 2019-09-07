@@ -1,0 +1,49 @@
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Open Sans";
+    font-weight: lighter;
+    color: rgb(69, 69, 69);
+}
+
+label {
+    font-family: "Open Sans";
+    font-weight: bold;
+    color: rgb(41, 41, 41);
+}
+
+input, button, input[type="submit"] {
+    border: none;
+    background-color: rgb(233, 233, 233);
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin: 1em;
+    border-radius: 2em;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: rgb(107, 107, 255);
+    color: white;
+    cursor: pointer;
+}
+
+form > div.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body, main, form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2.warning {
+    color: red;
+}
