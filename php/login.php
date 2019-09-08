@@ -67,7 +67,7 @@
 
         start_session(array('user' => $user_data));
         
-        redirect("home_page.php", null);
+        redirect("pages/home_page.php", null);
     }
 
     function start_session($data) {

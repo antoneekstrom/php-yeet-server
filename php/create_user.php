@@ -34,7 +34,7 @@
     if (isset($_POST['create_user']) || isset($_GET['create_user'])) {
 
         if ($_POST['password'] != $_POST['confirm_password']) {
-            redirect('create_user_page.php', array('passwords-not-matching' => 1));
+            redirect('pages/create_user_page.php', array('passwords-not-matching' => 1));
         }
 
         $salt = random_bytes(64);
@@ -51,7 +51,7 @@
             null
         );
 
-        redirect('login_page.php', null);
+        redirect('pages/login_page.php', null);
     }
 
 ?>

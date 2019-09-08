@@ -52,7 +52,7 @@
             session_destroy();
             session_abort();
         }
-        redirect('login_page.php');
+        redirect('pages/login_page.php');
     }
 
     main();

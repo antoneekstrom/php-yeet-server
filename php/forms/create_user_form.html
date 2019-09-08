@@ -1,0 +1,43 @@
+<div class="create_user">
+    <form action="create_user.php" method="POST">
+        <h2>Create User</h2>
+
+        <div class="section">
+            <label>Username: </label>
+            <input placeholder="Username" required type="text" name="username">
+        </div>
+
+        <div class="section">
+            <label>Email: </label>
+            <input placeholder="Email" type="email" name="email">
+        </div>
+
+        <div class="section">
+            <label>First Name: </label>
+            <input placeholder="First Name" required type="text" name="firstname">
+        </div>
+
+        <div class="section">
+            <label>Last Name: </label>
+            <input placeholder="Last Name" required type="text" name="lastname">
+        </div>
+
+        <div class="section">
+            <label>Password: </label>
+            <input placeholder="Password" required type="password" name="password">
+        </div>
+
+        <div class="section">
+            <label>Confirm Password: </label>
+            <input placeholder="Confirm Password" required type="password" name="confirm_password">
+        </div>
+
+        <div class="section">
+            <label>Birthday: </label>
+            <input type="date" name="birthday">
+        </div>
+
+
+        <input type="submit" name="create_user" value="Submit">
+    </form>
+</div>

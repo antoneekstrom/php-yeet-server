@@ -1,5 +1,5 @@
 <?php
-    include('user.php');
+    include('../user.php');
 
     if (!try_session()) {
         session_abort();
@@ -18,12 +18,12 @@
 <html lang="sv">
     <?php
         set_page_title("Home Page");
-        include_styles(array('../css/navbar.css'));
-        include("page_head.php"); 
+        include_styles(array('../../css/navbar.css'));
+        include("../page_head.php"); 
     ?>
     <body>
         <?php
-            include('components/header.php');
+            include('../components/header.php');
         ?>
         <main>
             <h1><?= random_greeting() ?></h1>

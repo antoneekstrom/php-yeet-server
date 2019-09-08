@@ -1,4 +1,4 @@
 <?php
     include("php/util.php");
-    redirect('php/login_page.php', null);
+    redirect('php/pages/login_page.php', null);
 ?>

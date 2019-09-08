@@ -5,7 +5,7 @@
 
     <title><?php echo $GLOBALS['title'] ?></title>
 
-    <link href="<?= (isset($GLOBALS['stylesheet']) ? $GLOBALS['stylesheet'] : '../style.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= (isset($GLOBALS['stylesheet']) ? $GLOBALS['stylesheet'] : '../../style.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
     <?php

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <?php $GLOBALS['title'] = 'Create Account'; include("page_head.php"); ?>
+    <?php $GLOBALS['title'] = 'Create Account'; include("../page_head.php"); ?>
     <body>
 
         <header>
@@ -8,7 +8,7 @@
         </header>
 
         <main>
-            <?php include("create_user_form.php") ?>
+            <?php readfile('../forms/create_user_form.html') ?>
         </main>
 
     </body>
