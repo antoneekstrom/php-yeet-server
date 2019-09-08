@@ -1,0 +1,15 @@
+div.nav-bar-inner {
+    min-height: 3rem;
+    width: 100vw;
+    background-color: rgb(30, 146, 255);
+
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar-title {
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0;
+}

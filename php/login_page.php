@@ -8,14 +8,14 @@
 
 <!DOCTYPE html>
 <html lang="sv">
-    <?php $GLOBALS['title'] = 'Login Page'; include("page_head.php"); ?>
+    <?php
+        $GLOBALS['title'] = 'Login Page';
+        include_styles(array('../css/navbar.css'));
+        include("page_head.php");
+    ?>
     <body>
-
-        <header>
-            <h1>YEEEEEEEEEEEEEEEEET</h1>
-        </header>
-
         <?php
+            include('components/header.php');
             if (isset($_GET['login_failed']) && $_GET['login_failed'] == 1) {
                 echo '<h2 class="warning">Password or username was invalid.</h2>';
             }

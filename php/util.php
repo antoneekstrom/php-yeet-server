@@ -29,6 +29,13 @@
         $GLOBALS['scripts'] = $scripts;
     }
 
+    function include_styles($styles) {
+        for ($i = 0; $i < count($styles); $i++) {
+            $styles[$i] = str_append($styles[$i], '../css/', false);
+        }
+        $GLOBALS['styles'] = $styles;
+    }
+
     function isset_array($array, $keys) {
         foreach ($keys as $key) {
             if (!isset($array[$key])) return false;

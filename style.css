@@ -67,3 +67,8 @@ body, main, form {
 h2.warning {
     color: red;
 }
+
+ul, ol, li {
+    list-style-type: none;
+    list-style: none;
+}
