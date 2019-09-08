@@ -21,16 +21,11 @@
         include("page_head.php"); 
     ?>
     <body>
-
-        <header>
-            <h1><?= random_greeting() ?></h1>
-            <?php
-            ?>
-        </header>
-
+        <?php
+            include('components/header.php');
+        ?>
         <main>
-            <button class="logout">Log Out</button>
+            <h1><?= random_greeting() ?></h1>
         </main>
-
     </body>
 </html>
