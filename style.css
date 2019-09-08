@@ -14,20 +14,40 @@ label {
     color: rgb(41, 41, 41);
 }
 
-input, button, input[type="submit"] {
-    border: none;
-    background-color: rgb(233, 233, 233);
-    padding: 0.5em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    margin: 1em;
-    border-radius: 2em;
+a.button {
+    text-decoration: none;
+    color: black;
 }
 
-button:hover, input[type="submit"]:hover {
+input, button, a.button, label.file-upload-button {
+    border: none;
+    background-color: rgb(233, 233, 233);
+    padding: 0.3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin: 1em;
+    border-radius: 2em;
+
+    transition: color, background-color, 0.2s;
+}
+
+button:hover, a.button:hover, label.file-upload-button:hover {
     background-color: rgb(107, 107, 255);
     color: white;
     cursor: pointer;
+}
+
+label.file-upload-button {
+    cursor: pointer;
+}
+
+label.file-upload-button > p {
+    margin: 0;
+    padding: 0;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 form > div.section {

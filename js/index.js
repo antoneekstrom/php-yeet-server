@@ -33,8 +33,25 @@ function resolveUrl(path) {
  * Change the page of the window.
  * @param {URL|string} url the url to navigate the window to 
  */
-function redirect(url) {
-    window.location.href = url == typeof(URL) ? url.href : url;
+function redirect(url, parameters) {
+    const urlObject = url == typeof(URL) ? url : new URL(url);
+    if (parameters != undefined) addParameters(urlObject.searchParams, parameters);
+    window.location.href = urlObject.href;
+}
+
+/**
+ * 
+ * @param {URLSearchParams} searchParams obj
+ * @param {} params 
+ */
+function addParameters(searchParams, params) {
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            const value = params[key];
+            searchParams.set(key, value);
+        }
+    }
+    return searchParams;
 }
 
 function logout() {

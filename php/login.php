@@ -1,6 +1,6 @@
 <?php
     include('http.php');
-    include('util.php');
+    include('user.php');
     include('password.php');
     include('database.php');
 
@@ -64,11 +64,16 @@
         
         $user_data['password_hash'] = '';
         $user_data['salt'] = '';
-        
-        session_start();
-        $_SESSION['user'] = $user_data;
 
+        start_session(array('user' => $user_data));
+        
         redirect("home_page.php", null);
+    }
+
+    function start_session($data) {
+        session_start();
+        session_regenerate_id(true);
+        $_SESSION = $data;
     }
 
     // attempt to login with credentials

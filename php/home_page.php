@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html lang="sv">
     <?php
-        $GLOBALS['title'] = 'Home Page';
+        set_page_title("Home Page");
         include("page_head.php"); 
     ?>
     <body>
@@ -25,11 +25,13 @@
         <header>
             <h1><?= random_greeting() ?></h1>
             <?php
+                echo session_id();
             ?>
         </header>
 
         <main>
-            <button class="logout">Log Out</button>
+            <a class="button" href="user.php?req=log_out">Log Out</a>
+            <a class="button" href="account_page.php">My Account</a>
         </main>
 
     </body>
