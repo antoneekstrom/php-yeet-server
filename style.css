@@ -1,40 +1,59 @@
 
+:root {
+    --color-main: rgb(107, 107, 255);
+    --color-bg: white;
+    --color-field: rgb(240, 240, 240);
+    --color-field-darker: rgb(179, 179, 179);
+    --color-contrast-bg: rgb(41, 41, 41);
+}
+
 body {
     margin: 0;
     padding: 0;
 
     font-family: "Open Sans";
     font-weight: lighter;
-    color: rgb(69, 69, 69);
+    color: var(--color-contrast-bg);
+    font-size: 20px;
 }
 
 label {
     font-family: "Open Sans";
     font-weight: bold;
-    color: rgb(41, 41, 41);
+    color: var(--color-contrast-bg);
 }
 
-a.button {
+a.button, a.notlink {
     text-decoration: none;
-    color: black;
+    font-size: 0.95rem;
 }
 
-input, button, a.button, label.file-upload-button {
+input, button, label {
+    font-size: 0.95rem;
+}
+
+input, button, a.button, label.button {
     border: none;
-    background-color: rgb(233, 233, 233);
+    color: var(--color-contrast-bg);
+    background-color: var(--color-field);
     padding: 0.3rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin: 1em;
     border-radius: 2em;
 
+    outline: none;
+
     transition: color, background-color, 0.2s;
 }
 
-button:hover, a.button:hover, label.file-upload-button:hover {
-    background-color: rgb(107, 107, 255);
-    color: white;
+a.button, button, input[type="submit"], label.button {
     cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:focus:active, button:focus:active, a.button:focus:active, label.file-upload-button:focus:active, label:focus:active {
+    background-color: var(--color-field-darker);
 }
 
 label.file-upload-button {
@@ -64,6 +83,13 @@ body, main, form {
     flex-direction: column;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
 h2.warning {
     color: red;
 }
@@ -71,4 +97,63 @@ h2.warning {
 ul, ol, li {
     list-style-type: none;
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+p.label {
+    font-weight: bold;
+}
+
+ul {
+    background-color: var(--color-field);
+    margin-bottom: 0.2rem;
+}
+
+div.info.row {
+    padding: 0.2rem;
+    margin-bottom: 0.2rem;
+    justify-content: space-between;
+}
+
+div.info.row > p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0;
+}
+
+img.profile-picture {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+p.username {
+    color: white;
+    font-weight: bold;
+    font-size: 130%;
+}
+
+nav > a.button {
+    margin-right: 0;
+}
+
+div.nav-bar-inner > div.center {
+    flex-grow: 1;
+}
+
+div.account > a {
+    margin-right: 0.8rem;
+}
+
+div.profile-picture-container {
+    overflow: hidden;
+    border-radius: 100%;
+    width: 3rem;
+    height: 3rem;
+}
+
+div.profile-picture-container.large {
+    width: 9rem;
+    height: 9rem;
 }

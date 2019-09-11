@@ -1,10 +1,16 @@
-div.nav-bar-inner {
-    min-height: 3rem;
+
+div.nav-bar-outer {
     width: 100vw;
-    background-color: rgb(30, 146, 255);
+    background-color: var(--color-main);
+}
+
+div.nav-bar-inner {
+    min-height: 4rem;
+    width: 95%;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .nav-bar-title {

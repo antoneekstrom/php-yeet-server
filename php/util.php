@@ -1,6 +1,6 @@
 <?php
 
-    $GLOBALS['root_dir'] = 'C:\Users\01aner98\Documents\php\php-yeet-server';
+    $GLOBALS['root_dir'] = 'E:\Files\php\php-yeet-server';
 
     function redirect($path, $params = array(), $use_js = false) {
         $url = $path . '?' . http_build_query($params);
