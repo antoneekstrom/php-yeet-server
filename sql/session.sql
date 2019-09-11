@@ -1,3 +1,3 @@
 -- @block session
 ALTER TABLE users
-ADD username_lowercase VARCHAR(32);
+MODIFY COLUMN profile_image VARCHAR(255);

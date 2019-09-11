@@ -10,7 +10,7 @@
 <html lang="sv">
     <?php
         $GLOBALS['title'] = 'Login Page';
-        include_styles(array('../../css/navbar.css'));
+        include_styles(array('navbar.css'), '../../css/');
         include("../page_head.php");
     ?>
     <body>

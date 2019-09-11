@@ -2,7 +2,6 @@
     include('http.php');
     include('user.php');
     include('password.php');
-    include('database.php');
 
     $username;
     $password;
@@ -10,10 +9,10 @@
     $user_data;
     $db;
 
-    $fetch_user_file = "../sql/fetch_user.sql";
-
     function login($_username, $_password) {
         global $username, $password;
+
+        if (isset($username) && strlen($username) > 0 && isset($password) && strlen($password) > 0) return;
 
         $username = $_username;
         $password = $_password;
@@ -26,34 +25,17 @@
         }
     }
 
-    function validate_content($username, $password)
-    {
-        return (isset($username) && strlen($username) > 0 && isset($password) && strlen($password) > 0);
-    }
-
     function validate_credentials() {
         global $username, $password, $user_data, $db;
 
-        if (validate_content($username, $password)) {
+        $db = connect_db();
+        $user_data = query_user_data($username);
 
-            $db = connect_db();
-            $user_data = query_user_data($username);
-
-            return verify_password($password, $user_data);
-        }
-        else return false;
-    }
-
-    function query_user_data($username) {
-        global $db, $fetch_user_file;
-
-        $q = replace_query_vars(file_get_contents($fetch_user_file), array('$username' => $username));
-
-        return db_query($db, $q)[0];
+        return verify_password($password, $user_data);
     }
 
     function credentials_invalid() {
-        $path = 'login_page.php';
+        $path = 'pages/login_page.php';
         $query = $_GET;
         $query['login_failed'] = 1;
         redirect($path, $query);
@@ -62,11 +44,9 @@
     function credentials_valid() {
         global $user_data;
         
-        $user_data['password_hash'] = '';
-        $user_data['salt'] = '';
-
+        $user_data = exclude_entries($user_data, array('password_hash', 'salt'));
         start_session(array('user' => $user_data));
-        
+
         redirect("pages/home_page.php", null);
     }
 

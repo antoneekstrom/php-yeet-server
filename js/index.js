@@ -60,10 +60,3 @@ function logout() {
     console.log(url);
     redirect(url);
 }
-
-onload = (e) => {
-    const buttons = document.querySelectorAll('.logout');
-    buttons.forEach((e) => {
-        e.onclick = (e) => logout();
-    });
-};
