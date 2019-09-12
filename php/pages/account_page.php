@@ -22,7 +22,7 @@
             <h2>Info</h2>
             <ul>
                 <div class="info row">
-                    <p class="label">username:</p>
+                    <p class="label">användarnamn:</p>
                     <p><?= $_SESSION['user']['username'] ?></p>
                 </div>
                 <div class="info row">
