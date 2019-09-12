@@ -15,20 +15,19 @@
         $profile_image
     ) {
 
-        $vars = array(
-            '$username' => $username,
-            '$lowercase_username' => strtolower($username),
-            '$email' => $email,
-            '$firstname' => ucfirst(strtolower($firstname)),
-            '$lastname' => ucfirst(strtolower($lastname)),
-            '$password_hash' => $password_hash,
-            '$salt' => $salt,
-            '$birthday' => $birthday,
-            '$profile_image' => $profile_image
+        $params = array(
+            ':username' => $username,
+            ':lowercase_username' => strtolower($username),
+            ':email' => $email,
+            ':firstname' => ucfirst(strtolower($firstname)),
+            ':lastname' => ucfirst(strtolower($lastname)),
+            ':password_hash' => $password_hash,
+            ':salt' => $salt,
+            ':birthday' => $birthday,
+            ':profile_image' => $profile_image
         );
 
-        $q = replace_query_vars(file_get_contents("../sql/create_user.sql"), $vars);
-        $r = db_query(connect_db(), $q);
+        $r = db_query(connect_db(), file_get_contents('../sql/create_user.sql'), $params);
     }
 
     if (isset($_POST['create_user']) || isset($_GET['create_user'])) {

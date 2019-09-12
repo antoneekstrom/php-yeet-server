@@ -29,7 +29,7 @@
         global $username, $password, $user_data, $db;
 
         $db = connect_db();
-        $user_data = query_user_data($username);
+        $user_data = query_user_data($username, $db);
 
         return verify_password($password, $user_data);
     }

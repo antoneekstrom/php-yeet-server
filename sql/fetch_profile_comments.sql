@@ -1,0 +1,1 @@
+SELECT * FROM profile_comments WHERE profile_user_id= :profile_user_id

@@ -42,7 +42,7 @@
                     <p><?= $_SESSION['user']['birthday'] ?></p>
                 </div>
                 <div class="info row">
-                    <p class="label">datum skapat:</p>
+                    <p class="label">profil skapad:</p>
                     <p><?= $_SESSION['user']['date_created'] ?></p>
                 </div>
             </ul>
@@ -55,13 +55,13 @@
             </div>
     
             <form id="upload_profile_image_form" enctype="multipart/form-data" action="user.php" method="POST">
-                <label for="upload_profile_image" class="file-upload button">Upload Profile Picture</label>
+                <label for="upload_profile_image" class="file-upload button">Ladda up profilbild</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="10000" />
                 <input type="hidden" name="req" value="upload_profile_image" />
                 <input type="file" name="profile_image" id="upload_profile_image" accept="image/png, image/jpeg">
             </form>
 
-            <a class="button" href="../user.php?req=log_out">Log Out</a>
+            <a class="button" href="../user.php?req=log_out">Logga ut</a>
         </main>
     </body>
 </html>

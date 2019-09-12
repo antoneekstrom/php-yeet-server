@@ -1,4 +1,3 @@
--- @block init
 CREATE TABLE users (
     id INT(8) UNSIGNED AUTO_INCREMENT KEY,
     username VARCHAR(32) NOT NULL,

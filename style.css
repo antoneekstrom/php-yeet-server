@@ -47,6 +47,20 @@ input, button, a.button, label.button {
     transition: color, background-color, 0.2s;
 }
 
+.no-margin {
+    margin: 0;
+}
+
+.small-margin.sides {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.small-margin.height {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 a.button, button, input[type="submit"], label.button {
     cursor: pointer;
     font-weight: bold;
@@ -76,7 +90,18 @@ form > div.section {
     flex-direction: column;
 }
 
+div.search-user-container {
+    margin-left: 2rem;
+}
+
 body, main, form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.column {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,6 +113,10 @@ body, main, form {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+.row.start, .column.start {
+    justify-content: start;
 }
 
 h2.warning {
@@ -108,6 +137,8 @@ p.label {
 ul {
     background-color: var(--color-field);
     margin-bottom: 0.2rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
 }
 
 div.info.row {
@@ -132,6 +163,7 @@ p.username {
     color: white;
     font-weight: bold;
     font-size: 130%;
+    margin: 0;
 }
 
 nav > a.button {
@@ -156,4 +188,52 @@ div.profile-picture-container {
 div.profile-picture-container.large {
     width: 9rem;
     height: 9rem;
+}
+
+.comments-container {
+    margin-top: 2rem;
+}
+
+.comment-field-container {
+    margin-top: 2rem;
+}
+
+div.comment-container {
+    background-color: var(--color-field);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+
+    justify-content: space-between;
+}
+
+div.content {
+    flex-grow: 1;
+}
+
+div.author {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 2rem;
+}
+
+div.author p.username {
+    color: var(--color-contrast-bg);
+}
+
+p.date {
+    font-size: 14px;
+}
+
+textarea {
+    border: none;
+    border-radius: 1rem;
+    font-family: "Open Sans";
+    padding: 1rem;
+    outline: none;
+    background-color: var(--color-field);
+    font-size: 17px;
+    resize: none;
+    width: 30vw;
 }

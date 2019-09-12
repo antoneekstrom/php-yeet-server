@@ -1,7 +1,11 @@
 
 div.nav-bar-outer {
-    width: 100vw;
+    width: 100%;
     background-color: var(--color-main);
+}
+
+header {
+    width: 100%;
 }
 
 div.nav-bar-inner {

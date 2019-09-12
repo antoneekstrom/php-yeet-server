@@ -12,13 +12,13 @@ INSERT INTO users (
     profile_image
 )
 VALUES (
-    '$username',
-    '$lowercase_username',
-    '$email',
-    '$firstname',
-    '$lastname',
-    '$password_hash',
-    '$salt',
-    '$birthday',
-    '$profile_image'
+    :username,
+    :lowercase_username,
+    :email,
+    :firstname,
+    :lastname,
+    :password_hash,
+    :salt,
+    :birthday,
+    :profile_image
 )

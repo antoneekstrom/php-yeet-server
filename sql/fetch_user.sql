@@ -1,1 +1,1 @@
-SELECT * FROM Users WHERE username='$username'
+SELECT * FROM users WHERE username= :username
