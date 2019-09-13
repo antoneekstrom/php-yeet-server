@@ -27,6 +27,7 @@
             <h1><?= random_greeting() ?></h1>
             <a class="button" href="profile_page.php">Min Profil</a>
             <a class="button" href="account_page.php">Mitt Konto</a>
+            <a class="button" href="search_page.php">Sök</a>
             <a class="button" href="../user.php?req=log_out">Logga ut</a>
         </main>
     </body>

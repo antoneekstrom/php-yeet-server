@@ -39,14 +39,18 @@
         $dir = '../uploads/profile_images';
         $path = join_paths($dir, $filename);
 
+        $dir = str_replace('\\', '\\\\', $dir);
+        $dir = str_replace('.', '\.', $dir);
         $stored_path = join_paths('uploads/profile_images', $filename);
-        $stored_path = str_replace('\\', '\\\\', $stored_path);
-        $stored_path = str_replace('.', '\.', $stored_path);
+        $db = connect_db();
 
-        print_r($_FILES);
+        $d = query_user_data($_SESSION['user']['username'], $db);
+        if (isset($d['profile_image']) || $d['profile_image'] != '') {
+            unlink(resolve_path($d['profile_image']));
+        }
+
         $success = move_uploaded_file($file['tmp_name'], $path);
         if ($success) {
-            $db = connect_db();
             $q = file_get_contents(resolve_path($GLOBALS['add_profile_image']));
             $id = $_SESSION['user']['id'];
             $params = array(':id' => $id, ':profile_image' => $stored_path);
@@ -60,7 +64,9 @@
 
         $param = is_integer($name_or_id) ? 'id' : 'username';
         $q = "SELECT * FROM users WHERE $param= :param";
-        $r = db_query($db, $q, array(':param' => $name_or_id))[0];
+        $r = db_query($db, $q, array(':param' => $name_or_id));
+
+        if (count($r) > 0) $r = $r[0];
 
         if ($fields != 'all') {
             return extract_entries($r, $fields);

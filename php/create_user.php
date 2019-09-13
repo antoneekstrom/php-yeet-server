@@ -1,8 +1,5 @@
 <?php
-
-    include("database.php");
-    include("password.php");
-    include("util.php");
+    include("login.php");
 
     function create_user(
         $username,
@@ -50,7 +47,9 @@
             null
         );
 
-        redirect('pages/login_page.php', null);
+        login($_POST['username'], $_POST['password']);
+        
+        //redirect('pages/login_page.php', null);
     }
 
 ?>

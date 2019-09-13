@@ -1,7 +1,7 @@
 
 const BASE_URL = new URL('http://localhost/php/');
 
-const BASE_DIR = '/php-yeet-server/php/';
+const BASE_DIR = '/php-yeet-server';
 
 /**
  * Combine two paths correctly.
@@ -55,7 +55,7 @@ function addParameters(searchParams, params) {
 }
 
 function logout() {
-    const url = resolveUrl('user.php');
+    const url = resolveUrl('php/user.php');
     url.searchParams.set('req', 'log_out');
     console.log(url);
     redirect(url);

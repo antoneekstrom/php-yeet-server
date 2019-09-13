@@ -17,7 +17,6 @@
         $stmt = $db->prepare($query);
         $stmt->execute($params);
         $err = $stmt->errorInfo();
-        echo $err[2];
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 

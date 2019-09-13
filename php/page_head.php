@@ -19,7 +19,7 @@
     <?php
         if (isset($GLOBALS['scripts'])) {
             foreach ($GLOBALS['scripts'] as $src) {
-                echo "<script src=\"$src\"></script>";
+                echo "<script defer src=\"$src\"></script>";
             }
         }
     ?>

@@ -1,3 +1,5 @@
+--  @block create_profile_comments
+USE yeet;
 CREATE TABLE profile_comments (
     id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
     profile_user_id INT(8) UNSIGNED NOT NULL,

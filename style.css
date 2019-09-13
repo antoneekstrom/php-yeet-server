@@ -51,6 +51,14 @@ input, button, a.button, label.button {
     margin: 0;
 }
 
+p.small {
+    font-size: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
 .small-margin.sides {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -117,6 +125,10 @@ body, main, form {
 
 .row.start, .column.start {
     justify-content: start;
+}
+
+.row.space {
+    justify-content: space-between;
 }
 
 h2.warning {
@@ -203,6 +215,7 @@ div.comment-container {
     padding: 1rem;
     border-radius: 1rem;
     margin-bottom: 1rem;
+    width: 50vw;
 
     justify-content: space-between;
 }
@@ -218,7 +231,7 @@ div.author {
     margin-right: 2rem;
 }
 
-div.author p.username {
+div.author p.username, div.content p.username {
     color: var(--color-contrast-bg);
 }
 
@@ -235,5 +248,12 @@ textarea {
     background-color: var(--color-field);
     font-size: 17px;
     resize: none;
+    width: 30vw;
+}
+
+li.result > div.content {
+    background-color: var(--color-field);
+    border-radius: 1rem;
+    padding: 0.5rem;
     width: 30vw;
 }

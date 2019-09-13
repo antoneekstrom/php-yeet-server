@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <?php $GLOBALS['title'] = 'Create Account'; include("../page_head.php"); ?>
+    <?php
+        include('../user.php');
+        set_page_title('Skapa Konto');
+        include_styles(array('navbar.css'), '../../css');
+        include("../page_head.php");
+    ?>
     <body>
 
-        <header>
-            <h1>YEEEEEEEEEEEEEEEEET</h1>
-        </header>
+        <?php
+            include('../components/header.php');
+        ?>
 
         <main>
             <?php readfile('../forms/create_user_form.html') ?>
