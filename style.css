@@ -257,3 +257,7 @@ li.result > div.content {
     padding: 0.5rem;
     width: 30vw;
 }
+
+span.search-term {
+    color: var(--color-main);
+}

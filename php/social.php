@@ -15,7 +15,16 @@
             case 'comment':
                 comment();
                 break;
+            case 'like_comment':
+                like_comment();
+                break;
         }
+    }
+
+    function like_comment() {
+        redirect_if_unset($_GET['id'], 'pages/home_page.php');
+        $db = connect_db();
+        db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), array(':id' => $_GET['id']));
     }
     
     function comment() {

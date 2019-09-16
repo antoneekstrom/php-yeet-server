@@ -25,12 +25,19 @@
             <ol id="search-results">
                 <?php
                     if (isset($_GET['input'])) {
-                        $results = search_users($_GET['input']);
+                        $input = $_GET['input'];
+                        $results = search_users($input);
                         $template = file_get_contents('../components/search_result_template.html');
 
                         foreach ($results as $r) {
+
+                            $username = $r['username'];
+                            $repl = "<span class=\"search-term\">$input</span>";
+                            $display_username = str_ireplace($input, $repl, $username);
+
                             $vars = array(
-                                '$username' => $r['username'],
+                                '$username' => $username,
+                                '$display_username' => $display_username,
                                 '$date_created' => $r['date_created'],
                                 '$fullname' => user_fullname($r),
                                 '$img' => join_paths('../../', $r['profile_image'])
