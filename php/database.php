@@ -12,11 +12,11 @@
         return new PDO("mysql:dbname=$dbname;host=$host;charset=utf8", $config->{"user"});
     }
 
-    function db_query($db, $query, $params) {
+    function db_query($db, $query, $params, &$stmt_out = null) {
         global $stmt;
         $stmt = $db->prepare($query);
         $stmt->execute($params);
-        $err = $stmt->errorInfo();
+        $stmt_out = $stmt;
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 

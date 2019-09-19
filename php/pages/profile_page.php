@@ -19,6 +19,10 @@
     <?php
         global $user;
 
+        echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">';
+
+        include_scripts(array('comment.js'), '../../js');
         include_styles(array('navbar.css'), '../../css');
         set_page_title($user['username'] . '- Profil');
         include('../page_head.php');
@@ -66,11 +70,24 @@
                     <?php
                         global $db;
                         $q = file_get_contents(resolve_path('sql/fetch_profile_comments.sql'));
-                        $comments = db_query($db, $q, array(':profile_user_id' => $GLOBALS['user']['id']));
+                        $params = array(':profile_user_id' => $GLOBALS['user']['id']);
+                        $comments = db_query($db, $q, $params);
                         
                         foreach ($comments as $c) {
                             $author = query_user_data(intval($c['author_user_id']), $db);
-                            echo create_comment($author['username'], $c['text'], join_paths('../../', $author['profile_image']), $c['date_created']);
+                            $rating = db_query($db, file_get_contents(resolve_path('sql/fetch_comment_rating.sql')), array(':comment_id' => $c['id']));
+
+                            $is_dislike = 0;
+                            if (isset($rating[0])) $is_dislike = $rating[0]['is_dislike'];
+
+                            $comment = array_merge($c, array(
+                                'profile_img' => join_paths('../../', $author['profile_image']),
+                                'author' => $author['username'],
+                                'is_rated' => isset($rating[0]),
+                                'is_dislike' => $is_dislike
+                            ));
+                            
+                            echo create_comment($comment);
                         }
                     ?>
                 </div>

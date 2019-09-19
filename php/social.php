@@ -7,24 +7,54 @@
     }
 
     function main_social() {
-        redirect_if_unset($_POST['req'], './pages/home_page.php');
+        $req = '';
 
-        $req = $_POST['req'];
+        if (isset($_POST['req'])) {
+            $req = $_POST['req'];
+        }
+        else if (isset($_GET['req'])) {
+            $req = $_GET['req'];
+        }
+        else {  
+            redirect('./pages/home_page.php');
+        }
 
         switch ($req) {
             case 'comment':
                 comment();
                 break;
-            case 'like_comment':
-                like_comment();
+            case 'rate_comment':
+                rate_comment();
                 break;
         }
     }
 
-    function like_comment() {
+    function rate_comment() {
         redirect_if_unset($_GET['id'], 'pages/home_page.php');
+        redirect_if_unset($_GET['is_dislike'], 'pages/home_page.php');
+
         $db = connect_db();
-        db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), array(':id' => $_GET['id']));
+        $params = array(
+            ':comment_id' => $_GET['id'],
+            ':user_id' => $_SESSION['user']['id'],
+            ':is_dislike' => $_GET['is_dislike']
+        );
+
+        $r = db_query($db, "SELECT * FROM likes WHERE comment_id= :comment_id AND user_id= :user_id", array(
+            ':comment_id' => $_GET['id'],
+            ':user_id' => $_SESSION['user']['id']
+        ));
+
+        if (count($r) > 0) {
+
+            if (intval($r[0]['is_dislike']) != intval($_GET['is_dislike'])) {
+                db_query($db, "DELETE FROM likes WHERE comment_id= :comment_id", array(':comment_id' => $_GET['id']));
+                db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), $params);
+            }
+        } 
+        else {
+            db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), $params);
+        }
     }
     
     function comment() {

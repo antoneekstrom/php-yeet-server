@@ -9,9 +9,15 @@
         <div class="comment-text">
             <p>$text</p>
         </div>
-        <div class="meta">
-            <p class="small date">$date_created</p>
-            <button class="like-button">Gilla</button>
+        <div class="bottom-container row start">
+            <div class="meta">
+                <p class="small date">$date_created</p>
+            </div>
+            <div class="button-container small-margin sides row">
+                <i alt="thumb_up" id="$id" class="icon material-icons button like-button $liked">thumb_up_alt</i>
+                <p>$likes</p>
+                <i alt="thumb_down" id="$id" class="icon material-icons button dislike-button $disliked">thumb_down_alt</i>
+            </div>
         </div>
     </div>
 </div>

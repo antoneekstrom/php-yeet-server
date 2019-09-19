@@ -1,0 +1,1 @@
+SELECT * FROM likes WHERE comment_id= :comment_id;

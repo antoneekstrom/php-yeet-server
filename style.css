@@ -258,6 +258,18 @@ li.result > div.content {
     width: 30vw;
 }
 
+i.button {
+    cursor: pointer;
+}
+
+.icon.active {
+    color: var(--color-main);
+}
+
+.icon.dislike-button.active {
+    color: rgb(255, 61, 61);
+}
+
 span.search-term {
     color: var(--color-main);
 }
