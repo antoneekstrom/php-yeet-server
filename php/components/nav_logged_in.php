@@ -2,6 +2,7 @@
     <div class="navigation">
         <nav>
             <a class="button" href="home_page.php">Hem</a>
+            <a class="button" href="rps_lobbies_page.php">🤛✌✋</a>
             <a class="button" href="../user.php?req=log_out">Logga ut</a>
         </nav>
     </div>

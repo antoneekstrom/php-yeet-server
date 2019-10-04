@@ -28,11 +28,39 @@ a.button, a.notlink {
     font-size: 0.95rem;
 }
 
+.button.active {
+    color: var(--color-main);
+}
+
+div.field-container {
+    display: flex;
+    flex-direction: row;
+
+    color: var(--color-contrast-bg);
+    background-color: var(--color-field);
+    padding: 0.3rem;
+    padding-left: 1.5rem;
+    margin: 1em;
+    border-radius: 2em;
+}
+
+div.field-container > input[type="text"] {
+    flex-grow: 2;
+    margin: 0;
+    padding: 0;
+    background-color: unset;
+    border-radius: 0;
+}
+
+div.field-container > input[type="submit"] {
+    margin: 0;
+}
+
 input, button, label {
     font-size: 0.95rem;
 }
 
-input, button, a.button, label.button {
+input, button, a.button, label.button, p.button, .button {
     border: none;
     color: var(--color-contrast-bg);
     background-color: var(--color-field);
@@ -147,7 +175,6 @@ p.label {
 }
 
 ul {
-    background-color: var(--color-field);
     margin-bottom: 0.2rem;
     border-radius: 2rem;
     padding: 0.5rem;
@@ -202,7 +229,7 @@ div.profile-picture-container.large {
     height: 9rem;
 }
 
-.comments-container {
+#view-buttons {
     margin-top: 2rem;
 }
 
@@ -222,6 +249,28 @@ div.comment-container {
 
 div.content {
     flex-grow: 1;
+}
+
+ul.field {
+    background-color: var(--color-field);
+}
+
+div.field-color {
+    background-color: var(--color-field);
+    border-radius: 1rem;
+}
+
+div.field-color .button, div.field-color input {
+    background-color: var(--color-bg);
+}
+
+div.background, ul.background {
+    background-color: var(--color-bg);
+}
+
+a.button.main, input.button.main {
+    background-color: var(--color-main);
+    color: var(--color-bg);
 }
 
 div.author {
@@ -258,6 +307,10 @@ li.result > div.content {
     width: 30vw;
 }
 
+div.content a.button, div.content input.button, div.content div.button {
+    background-color: var(--color-bg);
+}
+
 i.button {
     cursor: pointer;
 }
@@ -268,6 +321,10 @@ i.button {
 
 .icon.dislike-button.active {
     color: rgb(255, 61, 61);
+}
+
+span.main {
+    color: var(--color-main);
 }
 
 span.search-term {

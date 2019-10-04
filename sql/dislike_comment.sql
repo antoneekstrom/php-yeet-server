@@ -2,7 +2,7 @@
 USE yeet;
 
 UPDATE profile_comments
-SET likes = likes + 1
+SET likes = likes - 1
 WHERE id = :comment_id;
 
 INSERT INTO likes (
@@ -13,5 +13,5 @@ INSERT INTO likes (
 VALUES (
     :comment_id,
     :user_id,
-    0
+    1
 );

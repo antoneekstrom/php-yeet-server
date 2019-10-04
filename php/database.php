@@ -15,7 +15,7 @@
     function db_query($db, $query, $params, &$stmt_out = null) {
         global $stmt;
         $stmt = $db->prepare($query);
-        $stmt->execute($params);
+        if ($params != null) $stmt->execute($params); else $stmt->execute();
         $stmt_out = $stmt;
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

@@ -1,7 +1,15 @@
 
 div.nav-bar-outer {
     width: 100%;
-    background-color: var(--color-main);
+    background-color: var(--color-field);
+}
+
+div.nav-bar-outer a.button, div.nav-bar-outer div.field-container, div.nav-bar-outer input {
+    background-color: var(--color-bg);
+}
+
+a.notlink, a > p.username {
+    color: var(--color-bg-contrast);
 }
 
 header {
@@ -19,7 +27,16 @@ div.nav-bar-inner {
 
 .nav-bar-title {
     font-weight: bold;
-    color: white;
+    color: var(--color-contrast-bg);
     margin: 0;
     padding: 0;
+}
+
+@media screen and (max-width: 950px) {
+    div.nav-bar-outer input {
+        width: 80%;
+    }
+    div.nav-bar-outer nav {
+        display: none;
+    }
 }

@@ -42,7 +42,7 @@
                     if ($GLOBALS['is_own_profile']) echo "<a class=\"button\" href=\"account_page.php\">Redigera</a>";
                 ?>
             </div>
-            <ul>
+            <ul class="field">
                 <div class="info row">
                     <p class="label">användarnamn:</p>
                     <p><?= $GLOBALS['user']['username'] ?></p>
@@ -65,38 +65,28 @@
                 </div>
             </ul>
 
-            <div class="comments-container">
-                <div class="comments">
-                    <?php
-                        global $db;
-                        $q = file_get_contents(resolve_path('sql/fetch_profile_comments.sql'));
-                        $params = array(':profile_user_id' => $GLOBALS['user']['id']);
-                        $comments = db_query($db, $q, $params);
-                        
-                        foreach ($comments as $c) {
-                            $author = query_user_data(intval($c['author_user_id']), $db);
-                            $rating = db_query($db, file_get_contents(resolve_path('sql/fetch_comment_rating.sql')), array(':comment_id' => $c['id']));
+            <?php 
+                $view = 'comments';
+                if (isset($_GET['view'])) $view = $_GET['view'];
+            ?>
 
-                            $is_dislike = 0;
-                            if (isset($rating[0])) $is_dislike = $rating[0]['is_dislike'];
-
-                            $comment = array_merge($c, array(
-                                'profile_img' => join_paths('../../', $author['profile_image']),
-                                'author' => $author['username'],
-                                'is_rated' => isset($rating[0]),
-                                'is_dislike' => $is_dislike
-                            ));
-                            
-                            echo create_comment($comment);
-                        }
-                    ?>
-                </div>
-                <?php
-                    if (!$GLOBALS['is_own_profile']) {
-                        include(resolve_path('php/components/comment_field.php'));
-                    }
-                ?>
+            <div class="row" id="view-buttons">
+                <a class="button <?= $view == 'comments' ? 'active' : '' ?>" href="profile_page.php?view=comments#view-buttons">Comments</a>
+                <a class="button <?= $view == 'written' ? 'active' : '' ?>" href="profile_page.php?view=written#view-buttons">Written</a>
             </div>
+
+            <?php
+                switch ($view) {
+                    default:
+                    case 'comments':
+                        include('../components/profile_comments.php');
+                        break;
+                    
+                    case 'written':
+                        include('../components/profile_written.php');
+                        break;
+                }
+            ?>
         </main>
     </body>
 </html>

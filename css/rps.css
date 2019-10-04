@@ -1,0 +1,122 @@
+
+body {
+    font-family: "Comic Sans MS";
+    margin: 0;
+    padding: 0;
+
+    background: url("taco_dabbing.jpg");
+}
+
+header {
+    background-color: rgb(235, 235, 235);
+}
+
+main, header, form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+@keyframes rainbow {
+    0% {
+        color: red;
+    }
+    25% {
+        color: orange;
+    }
+    50% {
+        color: yellow;
+    }
+    75% {
+        color: limegreen;
+    }
+    100% {
+        color: blueviolet;
+    }
+}
+
+h1 {
+    animation: 2s linear 0s infinite alternate rainbow;
+}
+
+h1.countdown {
+    font-size: 1000%;
+    color: rgb(255, 199, 15);
+}
+
+h2.player {
+    color: rgb(255, 199, 15);
+}
+
+h2.computer {
+    color: rgb(32, 92, 255);
+}
+
+span.vinst {
+    color: rgb(10, 209, 10);
+}
+
+span.lika {
+    color: rgb(255, 199, 15);
+}
+
+span.förlust {
+    color: rgb(255, 15, 15);
+}
+
+span.increase {
+    margin-left: 0.5rem;
+}
+
+
+label.container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem;
+}
+
+label.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+}
+
+.radio-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(255, 199, 15);
+    border-radius: 100%;
+}
+
+label.container input:checked ~ .radio-button {
+    background-color: rgb(32, 92, 255);
+}
+
+input[type="submit"].rps, button.rps {
+    outline: none;
+    background-color: rgb(32, 92, 255);
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: "Comic Sans MS";
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}

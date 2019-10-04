@@ -3,7 +3,11 @@
     $GLOBALS['root_dir'] = join_paths($_SERVER['DOCUMENT_ROOT'], 'php-yeet-server');
 
     function redirect($path, $params = array(), $use_js = false) {
-        $url = $path . '?' . http_build_query($params);
+        $url = $path;
+
+        if (isset($params) && count($params) > 0) {
+            $url .= '?' . http_build_query($params);
+        }
 
         if ($use_js) {
             echo "<script type=\"text/javascript\">window.location.href = '$url'</script>";
@@ -11,6 +15,14 @@
         else {
             header("Location: $url");
         }
+    }
+
+    function rand_hex($length) {
+        $s = '';
+        for ($i = 0; $i < $length; $i++) {
+            $s .= chr(rand(65, 90));
+        }
+        return $s;
     }
 
     function user_fullname($user) {

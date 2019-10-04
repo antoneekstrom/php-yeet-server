@@ -45,16 +45,22 @@
             ':user_id' => $_SESSION['user']['id']
         ));
 
-        if (count($r) > 0) {
+        $exists = count($r) > 0; // true
+        $dislike = intval($_GET['is_dislike']) == 1; // false
+        $same = $exists ? intval($r[0]['is_dislike']) == intval($_GET['is_dislike']) : false; // true
 
-            if (intval($r[0]['is_dislike']) != intval($_GET['is_dislike'])) {
-                db_query($db, "DELETE FROM likes WHERE comment_id= :comment_id", array(':comment_id' => $_GET['id']));
-                db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), $params);
-            }
-        } 
-        else {
+        if (!($exists && !$same)) db_query($db, "DELETE FROM likes WHERE comment_id= :comment_id", array(':comment_id' => $_GET['id']));
+
+        echo json_encode(array('exists' => $exists, 'dislike' => $dislike, 'same' => $same));
+
+        if ((!$exists && $dislike) || ($same && !$dislike)) {
+            db_query($db, file_get_contents(resolve_path('sql/dislike_comment.sql')), $params);
+        }
+        else if ((!$exists && !$dislike) || ($same && $dislike)) {
             db_query($db, file_get_contents(resolve_path('sql/like_comment.sql')), $params);
         }
+
+        if ($same) db_query($db, "DELETE FROM likes WHERE comment_id= :comment_id", array(':comment_id' => $_GET['id']));
     }
     
     function comment() {
